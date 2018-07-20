@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title Emre Perde Mefruşat
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet', href='css/emreperde_style.css')
+  body
+    div.container.well.well-lg
+      form(method='post', action='/resim-al', enctype='multipart/form-data')
+        div.form-group.row
+          label.control-label.col-sm-3 Dosya:
+          div.col-sm-7
+            input.form-control(type='file', accept='image/*', name='dosya')
+        div.form-group.row
+          label.control-label.col-sm-3 URL:
+          div.col-sm-7
+            input.form-control(type='text', name='url')
+        button.btn.btn-success(type='submit') yolla

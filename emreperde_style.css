@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Oleo+Script');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+body {
+  font-family: Ubuntu, sans-serif;
+}
+
+.navbar-inverse {
+  background-color: #f9d8f8;
+  color: white
+}
+
+.navbar-brand {
+  font-family: 'Oleo Script', cursive;
+  font-size: 27px;
+  color: #337ab7 !important
+}
+
+.nav>li>a {
+  font-weight: bold;
+  font-size: 18px
+}
+
+.well {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 8px
+}
+
+h1 {
+  margin-bottom: 34px /* welldeki başlıklar için */
+}

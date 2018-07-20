@@ -1,0 +1,50 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title Emre Perde Mefruşat
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet', href='lightbox/dist/css/lightbox.min.css')
+    link(rel='stylesheet', href='css/emreperde_style.css')
+  body(data-spy='scroll', data-target='.navbar', style='position: relative')
+    // relative kısmı scrollspy için
+    // nav of single page
+    nav.navbar.navbar-inverse
+      .navbar-header
+        a.navbar-brand(href='#') Emre Perde
+      ul.nav.nav-pills.nav-justified
+        li
+          a(href='#hakkimizda') HAKKIMIZDA
+        li
+          a(href='#urunler') ÜRÜNLER
+        li
+          a(href='#iletisim') İLETİŞİM
+    #hakkimizda.container.well.well-lg
+      h1 HAKKIMIZDA
+      p Mağazamız 20 yılı aşkın süredir Kadıköy'de hizmet sunmaktadır.
+      p Başta TAÇ olmak üzere pek çok önemli markalar bulundurmaktayız.
+      p
+        | Perdenin yanı sıra nevresim ve masa örtüsü gibi çeşitli tekstil ürünleri de sunmaktayız.
+    #urunler.container.well.well-lg
+      h1 ÜRÜNLER
+      p Galerimiz yapım aşamasındadır.
+    #iletisim.container.well.well-lg
+      h1 İLETİŞİM
+      if mesajAl
+        div.alert.alert-success Mesajınız alındı.
+      form(action='/gonder', method='post')
+        .form-group.row
+          label.control-label.col-sm-4 İsim:
+          .col-sm-6
+            input.form-control(type='text', name='name', required)
+        .form-group.row
+          label.control-label.col-sm-4 E-mail:
+          .col-sm-6
+            input.form-control(type='text', name='email')
+        .form-group.row
+          label.control-label.col-sm-4 Mesajınız:
+          .col-sm-7
+            textarea.form-control(name='message', required)
+        button.btn.btn-success(type='submit') GÖNDER
+    script(src='https://code.jquery.com/jquery-1.12.4.min.js', integrity='sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=', crossorigin='anonymous')
+    script(src='lightbox/dist/js/lightbox.min.js')
