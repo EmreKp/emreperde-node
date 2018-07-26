@@ -6,6 +6,7 @@ const filesys = require('fs')
 const md5 = require('js-md5')
 const atici = multer({ dest: 'imaj/'})
 const mongo = require('mongodb').MongoClient
+const config = require('./ozel.json')
 const app = express()
 
 app.set('view engine', 'pug')
@@ -19,7 +20,7 @@ app.use(bodyParse.urlencoded({extended: true}))
 app.get('/', (rq, rs) =>
   rs.render('site', {
     mesajAl : rq.query.mesaj,
-    mapsKey : 'AIzaSyDz9HOAsysQ4b3GHOyuIBxajKvdZUndT80'
+    mapsKey : config.mapsApiKey
   })
 )
 
@@ -41,9 +42,6 @@ app.get('/mesajlar', (rq, rs) =>
   })
 )
 
-app.get("/mapsal", (rq, rs) =>
-  rs.render('mapsdemo', { mapsKey: 'AIzaSyDz9HOAsysQ4b3GHOyuIBxajKvdZUndT80'})
-)
 app.post('/resim-al', atici.single('dosya'), function (rq, rs) {
     url = rq.body.url
     if (url){
