@@ -3,6 +3,8 @@
 
 body {
   font-family: Ubuntu, sans-serif;
+  background: url('../site_images/reddenim.jpg');
+  background-attachment: fixed;
 }
 
 .navbar-inverse {
@@ -29,4 +31,9 @@ body {
 
 h1 {
   margin-bottom: 34px /* welldeki başlıklar için */
+}
+
+#harita {
+  height: 600px;
+  margin-bottom: 32px
 }

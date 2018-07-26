@@ -30,6 +30,7 @@ html
       p Galerimiz yapım aşamasındadır.
     #iletisim.container.well.well-lg
       h1 İLETİŞİM
+      div(id='harita')
       if mesajAl
         div.alert.alert-success Mesajınız alındı.
       form(action='/gonder', method='post')
@@ -46,5 +47,13 @@ html
           .col-sm-7
             textarea.form-control(name='message', required)
         button.btn.btn-success(type='submit') GÖNDER
+        div(class='adrestel')
+          p Osmanağa Mah. Arayıcıbaşı Sok. No: 31/3 Kadıköy/İSTANBUL
+          p
+            a(href='tel:+905423754937') 0542 375 49 37
+            |  -
+            a(href='mailto:admin@emreperde.com') admin@emreperde.com
     script(src='https://code.jquery.com/jquery-1.12.4.min.js', integrity='sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=', crossorigin='anonymous')
-    script(src='lightbox/dist/js/lightbox.min.js')
+    //script(src='lightbox/dist/js/lightbox.min.js')
+    script(src='js/emreperde.js')
+    script(src='https://maps.googleapis.com/maps/api/js?key=' + mapsKey + '&callback=mapaBak', async, defer)

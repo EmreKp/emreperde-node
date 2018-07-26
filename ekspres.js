@@ -17,7 +17,10 @@ app.locals.pretty = true
 app.use(bodyParse.urlencoded({extended: true}))
 
 app.get('/', (rq, rs) =>
-  rs.render('site', { mesajAl : rq.query.mesaj })
+  rs.render('site', {
+    mesajAl : rq.query.mesaj,
+    mapsKey : 'AIzaSyDz9HOAsysQ4b3GHOyuIBxajKvdZUndT80'
+  })
 )
 
 app.get('/deneme', (rq, rs) =>
@@ -28,6 +31,19 @@ app.get('/resim', (rq, rs) =>
   rs.render('resim')
 )
 
+app.get('/mesajlar', (rq, rs) =>
+  mongo.connect('mongodb://localhost:27017/perde', function(err, database) {
+    var db = database.db('perde')
+    db.collection('mesajlar').find({}).toArray(function(err, mesaz){
+      console.log(mesaz)
+      rs.render('mesaj', { messgs: mesaz })
+    })
+  })
+)
+
+app.get("/mapsal", (rq, rs) =>
+  rs.render('mapsdemo', { mapsKey: 'AIzaSyDz9HOAsysQ4b3GHOyuIBxajKvdZUndT80'})
+)
 app.post('/resim-al', atici.single('dosya'), function (rq, rs) {
     url = rq.body.url
     if (url){
@@ -41,10 +57,10 @@ app.post('/resim-al', atici.single('dosya'), function (rq, rs) {
 
 app.post('/gonder', (rq, rs) =>
   mongo.connect('mongodb://localhost:27017/perde', function(err, database) {
-    console.log('servera bagladi')
     var db = database.db('perde')
+    rq.body.date = new Date()
     db.collection('mesajlar').insertOne(rq.body)
-    console.log('eklendi')
+    console.log(rq.body)
     rs.redirect('/?mesaj=true')
   })
 )

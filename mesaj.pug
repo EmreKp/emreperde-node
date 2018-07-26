@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title Emre Perde Mefruşat
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet', href='lightbox/dist/css/lightbox.min.css')
+    link(rel='stylesheet', href='css/emreperde_style.css')
+  body
+    div.container
+      each msg in messgs
+        blockquote
+          p= msg.message
+          footer= msg.name+' - '+msg.date
