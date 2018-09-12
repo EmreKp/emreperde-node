@@ -17,3 +17,12 @@ html
           div.col-sm-7
             input.form-control(type='text', name='url')
         button.btn.btn-success(type='submit') yolla
+    div.container.well.well-lg
+      h3 RESİM SİL
+      form(action='/resim-sil', method='post')
+        div.row
+          each rsm in imgs
+            div.col-sm-2(style='border:4px solid black; padding:10px')
+              input(type='checkbox', name='resim', value=rsm.resim)
+              img(src= './imaj/' + rsm.resim, style='width:100%')
+        button.btn.btn-red(type='submit') sil

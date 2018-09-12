@@ -27,7 +27,10 @@ html
         | Perdenin yanı sıra nevresim ve masa örtüsü gibi çeşitli tekstil ürünleri de sunmaktayız.
     #urunler.container.well.well-lg
       h1 ÜRÜNLER
-      p Galerimiz yapım aşamasındadır.
+      each rsm in imgs
+        div.col-sm-2(style='padding:10px')
+          a(href= './imaj/' + rsm.resim, data-lightbox='galeri')
+            img(src= './imaj/' + rsm.resim, style='width:100%')
     #iletisim.container.well.well-lg
       h1 İLETİŞİM
       div(id='harita')
@@ -54,6 +57,6 @@ html
             |  -
             a(href='mailto:admin@emreperde.com') admin@emreperde.com
     script(src='https://code.jquery.com/jquery-1.12.4.min.js', integrity='sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=', crossorigin='anonymous')
-    //script(src='lightbox/dist/js/lightbox.min.js')
+    script(src='lightbox/dist/js/lightbox.min.js')
     script(src='js/emreperde.js')
     script(src='https://maps.googleapis.com/maps/api/js?key=' + mapsKey + '&callback=mapaBak', async, defer)
