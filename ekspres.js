@@ -7,6 +7,8 @@ const fs = require('fs')
 const geoip = require('geoip-lite-country')
 const atici = multer({ dest: 'resources/imaj/'})
 const mongo = require('mongodb').MongoClient
+//const passp = require('passport')
+//const passpStr = require('passport-local').Strategy
 const config = require('./ozel.json')
 const app = express()
 
@@ -41,14 +43,16 @@ app.get('/deneme', (rq, rs) =>
   rs.sendFile(__dirname + '/index_benim.html')
 )
 
-app.get('/resim', (rq, rs) =>
-  mongo.connect('mongodb://localhost:27017/perde', function(err, database) {
-    var db = database.db('perde')
-    db.collection('imajlar').find({}).toArray(function(err, imik){
-      rs.render('resim', { imgs: imik })
+app.get('/resim', function(rq, rs){
+  //passport.authenticate('local', function (rq, rs) {
+    mongo.connect('mongodb://localhost:27017/perde', function(err, database) {
+      var db = database.db('perde')
+      db.collection('imajlar').find({}).toArray(function(err, imik){
+        rs.render('resim', { imgs: imik })
+      })
     })
-  })
-)
+  //})
+})
 
 app.get('/mesajlar', (rq, rs) =>
   mongo.connect('mongodb://localhost:27017/perde', function(err, database) {
